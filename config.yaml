@@ -1,0 +1,219 @@
+# CUDA_VISIBLE_DEVICES: 0,1
+seed: 42
+###RANDOM
+data_path: /home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c639
+#data_path: /home/omnisky/code/dis41901.csv    newpre/73/4000/stratify/c639   /OR/73/4000/stratify/c639
+#data_path: /home/omnisky/data/DIda/DI_pkl  /OR/73/4000/c639   /newpre/73/4000/c639_snr20   newpre/73/4000/c163  OR/73/4000/c163
+# #111################ResNetparams
+batch_size: 64  
+model: 
+  type: ResNetim
+  args: 
+   {
+     depth: 50,
+     num_classes: 639,
+     dropout: 0
+   }
+
+
+
+
+loss: 
+  type: CELoss
+  args: 
+    {}
+
+optimizer: 
+  type: Adam
+  args: 
+    lr: 1e-4
+    weight_decay: 1e-5
+
+lr_scheduler: 
+
+  type: CosineAnnealingLR
+  args: 
+    T_max: 100 
+
+
+###########   trainer: ##############
+epochs: 100
+save_dir: saved/
+monitor: off
+mnt_mode: min
+mnt_metric: val_loss
+early_stop: 5
+val_per_epochs: 1
+test_per_epochs: 1
+save_period: 1
+tensorboard: true
+
+log_dir: saved/runs
+threshold: 0.5
+amp: false
+
+
+
+#222################cnn2dparams
+# batch_size: 64
+# model: 
+#   type: cnn2d
+#   args: 
+#    {}
+ 
+#     # {
+#     #   image_size: [72,3400],
+#     #   n: 6,
+#     #   num_classes: 1,   
+#     #   dim: 1024,
+#     #   depth: 6,
+#     #   heads: 16,
+#     #   mlp_dim: 2048,
+#     #   dropout: 0.3,
+#     #   emb_dropout: 0.3
+#     #}
+#     # {}
+
+# loss: 
+#   type: BCELoss
+#   args: 
+#     {}
+
+# optimizer: 
+#   type: Adam
+#   args: 
+#     lr: 1e-4
+#     weight_decay: 1e-5
+
+# lr_scheduler: 
+
+#   type: CosineAnnealingLR
+#   args: 
+#     T_max: 40
+
+
+# ###########   trainer: ##############
+# epochs: 40
+# save_dir: saved/
+# monitor: off
+# mnt_mode: min
+# mnt_metric: val_loss
+# early_stop: 10
+# val_per_epochs: 1
+# test_per_epochs: 1
+# save_period: 1
+# tensorboard: true
+
+# log_dir: saved/runs
+# threshold: 0.5
+# amp: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ########### data_loader: #############
+# #333################ViT's params
+# batch_size: 64
+# model:
+#   type: ViT
+#   args:
+ 
+#     {
+#       image_size: [72,3400],
+#       patch_size: [9,100],
+#       num_classes: 303,   
+#       dim: 1024,
+#       depth: 6,
+#       heads: 16,
+#       mlp_dim: 2048,
+#       dropout: 0.3,
+#       emb_dropout: 0.3
+#     }
+#     {}
+
+# loss:
+#   type: CELoss
+#   args:
+#     {}
+
+# optimizer:
+#   type: Adam
+#   args:
+#     lr: 1e-5
+#     weight_decay: 1e-5
+
+# lr_scheduler:
+
+#   type: CosineAnnealingLR
+#   args:
+#     T_max: 40
+
+
+# ##########   trainer: ##############
+# epochs: 40
+# save_dir: saved/
+# monitor: off
+# mnt_mode: min
+# mnt_metric: val_loss
+# early_stop: 10
+# val_per_epochs: 1
+# test_per_epochs: 1
+# save_period: 1
+# tensorboard: true
+
+# log_dir: saved/runs
+# threshold: 0.5
+# amp: false
+
+
+# ###000mlp################ResNetparams
+# batch_size: 64
+# model: 
+#   type: mlp4
+#   args: 
+#    {}
+ 
+    
+
+# loss: 
+#   type: BCELoss
+#   args: 
+#     {}
+
+# optimizer: 
+#   type: Adam
+#   args: 
+#     lr: 1e-4
+#     weight_decay: 1e-5
+
+# lr_scheduler: 
+
+#   type: CosineAnnealingLR
+#   args: 
+#     T_max: 40
+
+
+# ###########   trainer: ##############
+# epochs: 40
+# save_dir: saved/
+# monitor: off
+# mnt_mode: min
+# mnt_metric: val_loss
+# early_stop: 10
+# val_per_epochs: 1
+# test_per_epochs: 1
+# save_period: 1
+# tensorboard: true
+
+# log_dir: saved/runs
+# threshold: 0.5
+# amp: false
