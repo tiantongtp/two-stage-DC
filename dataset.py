@@ -11,8 +11,8 @@ class SHM_Dataset(Dataset):
     def __getitem__(self, idx):
         data = self.data[idx]
         label = self.label[idx]
-        # b,c,h,w = data.shape
-        # data = data.reshape(b,c,1,-1)  
+        #b,c = data.shape
+        #data = data.reshape(1,-1)  #1 288000
         #print(data)      
         #return torch.tensor(data).float().unsqueeze(0), torch.tensor(label).float().unsqueeze(0)#二分类
         return idx, torch.tensor(data).float().unsqueeze(0), torch.tensor(label)  #多分类 2d

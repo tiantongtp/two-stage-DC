@@ -1,18 +1,18 @@
-# CUDA_VISIBLE_DEVICES: 0,1
+CUDA_VISIBLE_DEVICES: 0,1
 seed: 42
 ###RANDOM
-data_path: /home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c639
+data_path: /home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c100
 #data_path: /home/omnisky/code/dis41901.csv    newpre/73/4000/stratify/c639   /OR/73/4000/stratify/c639
 #data_path: /home/omnisky/data/DIda/DI_pkl  /OR/73/4000/c639   /newpre/73/4000/c639_snr20   newpre/73/4000/c163  OR/73/4000/c163
 # #111################ResNetparams
 batch_size: 64  
 model: 
-  type: ResNetim
+  type: ResNet
   args: 
    {
      depth: 50,
-     num_classes: 639,
-     dropout: 0
+     num_classes: 100,
+    #  dropout: 0
    }
 
 
@@ -33,11 +33,11 @@ lr_scheduler:
 
   type: CosineAnnealingLR
   args: 
-    T_max: 100 
+    T_max: 10 
 
 
 ###########   trainer: ##############
-epochs: 100
+epochs: 10
 save_dir: saved/
 monitor: off
 mnt_mode: min

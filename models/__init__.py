@@ -4,3 +4,7 @@ from .cnn import cnn2d
 from .resnet import ResNet
 from .svm import svm
 from .imres import ResNetim
+from .resnet1d import ResNet1d
+from .dcn import DCN
+from .dcn1d import CNN1D
+from .cnn1d import cnn1d

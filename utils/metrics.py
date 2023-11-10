@@ -1,14 +1,14 @@
 from tkinter import Y
 import numpy as np
 import torch
-from sklearn.metrics import f1_score, average_precision_score,jaccard_score, precision_recall_curve, roc_auc_score, confusion_matrix,accuracy_score, precision_score,recall_score
-import cv2
-from scipy.sparse import coo_matrix
-import matplotlib.pyplot as plt
-from sklearn.metrics import ConfusionMatrixDisplay
-from sklearn.metrics import classification_report
-import csv
+from sklearn.metrics import f1_score, average_precision_score,jaccard_score,precision_recall_curve, roc_auc_score,confusion_matrix,accuracy_score, precision_score,recall_score
+from sklearn.metrics import roc_curve, auc
 import warnings
+import argparse
+import configparser
+
+from bunch import Bunch
+from ruamel.yaml import safe_load
 warnings.filterwarnings("ignore")
 class AverageMeter(object):
     """Computes and stores the average and current value"""
@@ -19,6 +19,7 @@ class AverageMeter(object):
         self.avg = None
         self.sum = None
         self.count = None
+ 
 
     def initialize(self, val, weight):
         self.val = val
@@ -48,8 +49,11 @@ class AverageMeter(object):
         return np.round(self.avg, 4)
 
 
+
+
 # # 多分类指标
 def get_metrics(predict, target,threshold):
+    
     _, predict_m = torch.max(predict.data, 1)
     target = target.cpu().detach().numpy().flatten()
     predict_m = predict_m.cpu().detach().numpy().flatten()
@@ -58,7 +62,7 @@ def get_metrics(predict, target,threshold):
     pre =precision_score(target,predict_m, average='macro')# macro micro
     sen =recall_score(target,predict_m, average='macro')
     f1 =f1_score(target,predict_m, average='macro')
-    jc=jaccard_score(target,predict_m, average='macro')
+    jc=jaccard_score(target,predict_m, average='macro')  
 
     return {
         
