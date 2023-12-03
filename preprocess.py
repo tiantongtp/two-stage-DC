@@ -35,7 +35,7 @@ def data_preprocess(data_path,save_path):
         #data = np.exp(data)
         #data = (data - data.mean()) / (data.max() - data.min())#mean normalization
         
-        data = awgn(data,snr) #加白噪声     
+        #data = awgn(data,snr) #加白噪声     
         data_ls.append(data)
         print(f"{id}:{i}  {label_file[1][id]}")
 
@@ -57,5 +57,5 @@ def save_data(data_list, path, type):
 if __name__ == "__main__":
     data_path = "/home/tiantong/data/tt/datanew/csvdata100k"#读取数据所在的文件夹 _snr30 _snr25 _snr20
     label_path = "/home/tiantong/data/tt/datanew/label"
-    save_path = "/home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c638_snr25"  # /newpre/73/4000/stratify/c639_snr25  /OR/73/4000/stratify/c375
+    save_path = "/home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c375"  # /newpre/73/4000/stratify/c639_snr25  /OR/73/4000/stratify/c375
     data_preprocess(data_path,save_path)
