@@ -28,7 +28,7 @@ def data_preprocess(data_path,save_path):
 
     for id,i in  enumerate(label_file[0]):
         data = np.array(pd.read_csv(os.path.join(data_path,i),header=None))#[:,600:]  #3400
-        data[:,0:599]=0 #将前400行替换为0 4000       
+        #data[:,0:599]=0 #将前400行替换为0 4000       
         #mn = data.mean()
         #std = data.std()
         #print(data[c].shape, data[c].dtype, mn, std)        
@@ -55,7 +55,7 @@ def save_data(data_list, path, type):
 
 
 if __name__ == "__main__":
-    data_path = "/home/tiantong/data/tt/datanew/csvdata100k"#读取数据所在的文件夹 _snr30 _snr25 _snr20
-    label_path = "/home/tiantong/data/tt/datanew/label"
-    save_path = "/home/tiantong/data/tt/datanew/pkldata/classify/newpre/73/4000/c375"  # /newpre/73/4000/stratify/c639_snr25  /OR/73/4000/stratify/c375
+    data_path = "/home/tiantong/data/t1"#读取数据所在的文件夹 _snr30 _snr25 _snr20
+    label_path = "/home/tiantong/data/t2"
+    save_path = "/home/tiantong/data/t3"  
     data_preprocess(data_path,save_path)

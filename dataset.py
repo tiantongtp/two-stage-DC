@@ -53,7 +53,3 @@ class mlp_Dataset(Dataset):#mlp特征值数据 分类模型
     def __len__(self):
         return len(self.data)
 
-# if __name__=="__main__":
-#     path = "/home/omnisky/data/4000/4000_pkl"#读取数据所在的文件夹
-#     data = SHM_Dataset(path,"train")
-    
